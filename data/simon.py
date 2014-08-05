@@ -11,15 +11,6 @@ class State(object):
     def set_next_state(self, state):
         self.next_state = state
 
-class WaitState(State):
-    def __init__(self):
-        State.__init__(self)
-    def update(self, events, simon):
-        for event in events:
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                self.active = False
-                self.next_state.active = True
-
 class OutputState(State):
     def __init__(self, rounds):
         State.__init__(self)
