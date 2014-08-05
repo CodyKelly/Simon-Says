@@ -2,10 +2,10 @@ import pygame
 
 pygame.mixer.init()
 
-sound1 = pygame.mixer.Sound('data/sfx/1.ogg')
-sound2 = pygame.mixer.Sound('data/sfx/2.ogg')
-sound3 = pygame.mixer.Sound('data/sfx/3.ogg')
-sound4 = pygame.mixer.Sound('data/sfx/4.ogg')
+sound1 = 'data/sfx/1.ogg'
+sound2 = 'data/sfx/2.ogg'
+sound3 = 'data/sfx/3.ogg'
+sound4 = 'data/sfx/4.ogg'
 
 class Tile(object):
     def __init__(self, pos, size, color, sound):
@@ -61,7 +61,8 @@ class Board(object):
             tile.draw(screen)
     def flash_tile(self, tileNum):
         self.tiles[tileNum].flash()
-        self.tiles[tileNum].sound.play()
+        pygame.mixer.music.load(self.tiles[tileNum].sound)
+        pygame.mixer.music.play()
     def get_tile(self, mousePos):
         for tileNum in range(0,len(self.tiles)):
             if self.tiles[tileNum].rect.collidepoint(mousePos):
