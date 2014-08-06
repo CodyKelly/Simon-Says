@@ -12,7 +12,7 @@ class Tile(object):
         self.rect = pygame.Rect(pos, size)
         self.color = color
         self.flashFrames = 0
-        self.flashDuration = 60
+        self.flashDuration = 40
         self.disableFrames = 0
         self.disableDuration = 70
         self.sound = sound
