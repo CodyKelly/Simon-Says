@@ -40,7 +40,7 @@ def run():
         simon.update(events)
         board.update()
 
-        #draw everything
+        #draw board
         board.draw(screen)
 
         pygame.display.update()

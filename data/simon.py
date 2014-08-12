@@ -6,6 +6,7 @@ right = pygame.mixer.Sound('data/sfx/right.ogg')
 wrong = pygame.mixer.Sound('data/sfx/wrong.ogg')
 
 class State(object):
+    # base class for Simon's states. Holds the next state, whether the state is active or not, and Simon
     def __init__(self, simon):
         self.active = False
         self.simon = simon
@@ -13,6 +14,7 @@ class State(object):
         self.next_state = state
 
 class OutputState(State):
+    # This state chooses and flashes random tiles and keeps track of the tiles picked.
     def __init__(self, simon):
         State.__init__(self, simon)
         self.moves = simon.rounds+simon.addedRounds
@@ -21,7 +23,7 @@ class OutputState(State):
             self.moveList.append(random.randint(0,3))
         self.delayFrame = 0
         self.delay = 50
-        self.currentmove = 0
+        self.currentMove = 0
         self.startDelay = 150
         self.startDelayFrame = 0
     def set_next_state(self, state):
@@ -33,9 +35,9 @@ class OutputState(State):
             if self.delayFrame > 0:
                 self.delayFrame -= 1
             else:
-                if self.currentmove < self.moves:
-                    self.simon.board.flash_tile(self.moveList[self.currentmove])
-                    self.currentmove += 1
+                if self.currentMove < self.moves:
+                    self.simon.board.flash_tile(self.moveList[self.currentMove])
+                    self.currentMove += 1
                 else:
                     self.active = False
                     self.next_state.active = True
@@ -43,6 +45,7 @@ class OutputState(State):
                 self.delayFrame = self.delay
 
 class InputState(State):
+    # This state allows the user to choose tiles and keeps track of the tiles picked.
     def __init__(self, simon):
         State.__init__(self, simon)
         self.delayFrames = 0
@@ -91,6 +94,8 @@ class InputState(State):
         self.delayFrames = 0
 
 class ResultState(State):
+    # this state compares the tiles Simon picked and the tiles the user picked
+    # if the user was correct, it adds a round to the game. Otherwise the game is reset to three rounds.
     def __init__(self, simon):
         State.__init__(self, simon)
     def update(self, events):
@@ -104,6 +109,7 @@ class ResultState(State):
             self.simon.reset()
 
 class Simon(object):
+    # Keeps track of states and number of rounds.
     def __init__(self, board, rounds, addedRounds):
         self.board = board
         self.rounds = rounds
