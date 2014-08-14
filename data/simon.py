@@ -37,7 +37,6 @@ class OutputState(State):
                 else:
                     self.active = False
                     self.next_state.active = True
-                    self.simon.moveList = self.simon.moveList
                 self.delayFrame = self.delay
 
 class InputState(State):
