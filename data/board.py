@@ -49,10 +49,10 @@ class Board(object):
         halfWindowSize = (windowRect.width/2, windowRect.height/2)
         r = windowRect
         self.tiles = [
-            Tile((r.topleft[0],r.topleft[1]), halfWindowSize, red, sound1),
-            Tile((r.midtop[0], r.midtop[1]), halfWindowSize, blue, sound2),
+            Tile((r.topleft[0],r.topleft[1]), halfWindowSize, green, sound1),
+            Tile((r.midtop[0], r.midtop[1]), halfWindowSize, red, sound2),
             Tile((r.midleft[0], r.midleft[1]), halfWindowSize, yellow, sound3),
-            Tile((r.center[0], r.center[1]), halfWindowSize, green, sound4)
+            Tile((r.center[0], r.center[1]), halfWindowSize, blue, sound4)
         ]
         self.frames = 0
         self.duration = 50

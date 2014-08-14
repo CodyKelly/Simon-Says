@@ -21,7 +21,7 @@ def run():
 
     #initialize everything
     board = Board(windowRect)
-    simon = Simon(board, 3, 0)
+    simon = Simon(board, [])
 
     #game loop
     while True:
