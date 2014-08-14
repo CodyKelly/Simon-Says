@@ -14,7 +14,7 @@ class Tile(object):
         self.rect = pygame.Rect(pos, size)
         self.color = color
         self.flashFrames = 0 # If this is more than 0, the tile is lit up
-        self.flashDuration = 40
+        self.flashDuration = 25
         self.disableFrames = 0 # If this is more than 0, the tile stops being drawn to board
         self.disableDuration = 70
         self.sound = sound
